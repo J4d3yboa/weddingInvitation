@@ -1,561 +1,469 @@
-import { useState } from "react";
-import { Menu, X, Heart, MapPin, Clock, Users, Mail, Phone } from "lucide-react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
-import { Label } from "./ui/label";
-import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
-import { Separator } from "./ui/separator";
-import { Card, CardContent } from "./ui/card";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
+import { motion } from 'framer-motion';
+import { QrCode, MapPin, Calendar, Clock, Phone } from 'lucide-react';
 
-export function WeddingInvitation() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [rsvpData, setRsvpData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    attendance: "yes",
-    guests: "1",
-    message: ""
-  });
+interface WeddingInvitationProps {
+  language: 'de' | 'pt';
+}
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setMobileMenuOpen(false);
-    }
-  };
+const translations = {
+  de: {
+    invitation: "Wir heiraten!",
+    inviteText: "haben die Freude, Sie zu ihrer Hochzeit einzuladen",
+    location: "Location",
+    address: "Zehnthof: Badstraße 7, 76835 Gleisweiler",
+    dateLabel: "Datum",
+    date: "27. Juni 2026",
+    timeLabel: "Uhrzeit",
+    time: "15:00 Uhr",
+    dresscode: "Dresscode",
+    dresscodeText: "Elegante Garderobe",
+    colorSuggestion: "Farbempfehlung: Türkis-Töne",
+    rsvpLabel: "Zu-/Absage bis",
+    rsvpDate: "15. April 2026",
+    contact: "Kontakt",
+    phone: "+49 123 456789",
+    qrText: "Für weitere Informationen",
+    qrScan: "QR-Code einscannen"
+  },
+  pt: {
+    invitation: "Nós vamos casar!",
+    inviteText: "têm o prazer de convidá-lo para o seu casamento",
+    location: "Local",
+    address: "Zehnthof: Badstraße 7, 76835 Gleisweiler",
+    dateLabel: "Data",
+    date: "15 de junho de 2026",
+    timeLabel: "Horário",
+    time: "15:00",
+    dresscode: "Dress Code",
+    dresscodeText: "Traje elegante",
+    colorSuggestion: "Sugestão de cor: Tons de turquesa",
+    rsvpLabel: "Confirmação até",
+    rsvpDate: "15 de abril de 2026",
+    contact: "Contato",
+    phone: "+49 123 456789",
+    qrText: "Para mais informações",
+    qrScan: "Escaneie o código QR"
+  }
+};
 
-  const handleRsvpSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(`Vielen Dank für Ihre Rückmeldung, ${rsvpData.name}!`);
-  };
+export function WeddingInvitation({ language }: WeddingInvitationProps) {
+  const t = translations[language];
 
   return (
-    <div className="min-h-screen bg-amber-50/30">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-amber-100/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <button onClick={() => scrollToSection('hero')} className="tracking-widest text-amber-900">
-              A & M
-            </button>
+    <div className="min-h-screen flex items-center justify-center p-4 md:p-8 relative overflow-hidden">
+      {/* Animated background pattern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#f5f1ea] via-[#faf8f3] to-[#f0ebe3]">
+        <div className="absolute inset-0 opacity-[0.03]" 
+             style={{
+               backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+             }}>
+        </div>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative w-full max-w-3xl"
+      >
+        {/* Silver outer frame with metallic effect */}
+        <div className="relative p-1 rounded-sm bg-gradient-to-br from-[#e8e8e8] via-[#c0c0c0] to-[#a8a8a8] shadow-[0_0_40px_rgba(192,192,192,0.4),inset_0_1px_2px_rgba(255,255,255,0.8)]">
+          {/* Inner silver border with engraved effect */}
+          <div className="relative p-[6px] rounded-sm bg-gradient-to-br from-[#d4d4d4] via-[#b8b8b8] to-[#c8c8c8] shadow-[inset_0_2px_4px_rgba(0,0,0,0.2),0_1px_2px_rgba(255,255,255,0.5)]">
+            {/* Decorative silver corner accents */}
+            <div className="absolute top-2 left-2 w-8 h-8 border-l-2 border-t-2 border-[#e8e8e8] rounded-tl-sm"></div>
+            <div className="absolute top-2 right-2 w-8 h-8 border-r-2 border-t-2 border-[#e8e8e8] rounded-tr-sm"></div>
+            <div className="absolute bottom-2 left-2 w-8 h-8 border-l-2 border-b-2 border-[#e8e8e8] rounded-bl-sm"></div>
+            <div className="absolute bottom-2 right-2 w-8 h-8 border-r-2 border-b-2 border-[#e8e8e8] rounded-br-sm"></div>
             
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection('hero')} className="text-amber-800 hover:text-amber-900 transition-colors">Start</button>
-              <button onClick={() => scrollToSection('about')} className="text-amber-800 hover:text-amber-900 transition-colors">Über Uns</button>
-              <button onClick={() => scrollToSection('schedule')} className="text-amber-800 hover:text-amber-900 transition-colors">Ablauf</button>
-              <button onClick={() => scrollToSection('location')} className="text-amber-800 hover:text-amber-900 transition-colors">Location</button>
-              <button onClick={() => scrollToSection('dresscode')} className="text-amber-800 hover:text-amber-900 transition-colors">Dresscode</button>
-              <button onClick={() => scrollToSection('gallery')} className="text-amber-800 hover:text-amber-900 transition-colors">Galerie</button>
-              <button onClick={() => scrollToSection('rsvp')} className="text-amber-800 hover:text-amber-900 transition-colors">Zusagen</button>
-            </div>
+            {/* Silver ornamental dots */}
+            <div className="absolute top-4 left-4 w-2 h-2 rounded-full bg-gradient-to-br from-[#ffffff] to-[#c0c0c0] shadow-[0_1px_3px_rgba(0,0,0,0.3)]"></div>
+            <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-gradient-to-br from-[#ffffff] to-[#c0c0c0] shadow-[0_1px_3px_rgba(0,0,0,0.3)]"></div>
+            <div className="absolute bottom-4 left-4 w-2 h-2 rounded-full bg-gradient-to-br from-[#ffffff] to-[#c0c0c0] shadow-[0_1px_3px_rgba(0,0,0,0.3)]"></div>
+            <div className="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-gradient-to-br from-[#ffffff] to-[#c0c0c0] shadow-[0_1px_3px_rgba(0,0,0,0.3)]"></div>
 
-            {/* Mobile Menu Button */}
-            <button 
-              className="md:hidden text-amber-900"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            {/* Main invitation card */}
+            <div className="relative bg-gradient-to-br from-[#fdfcfa] to-[#faf7f2] rounded-sm shadow-[0_20px_60px_rgba(139,115,85,0.15)] border border-[#d4c5b0]/30 overflow-hidden">
+              {/* Paper texture overlay */}
+              <div className="absolute inset-0 opacity-[0.015] pointer-events-none"
+                   style={{
+                     backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+                   }}>
+              </div>
+
+              <div className="relative p-8 md:p-16">
+            {/* Decorative corner ornaments with silver accents */}
+            <svg className="absolute top-6 left-6 w-16 h-16" viewBox="0 0 64 64" fill="none">
+              <defs>
+                <linearGradient id="silverGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#e8e8e8" />
+                  <stop offset="50%" stopColor="#c0c0c0" />
+                  <stop offset="100%" stopColor="#a8a8a8" />
+                </linearGradient>
+              </defs>
+              <path d="M0 0 L0 20 Q0 0 20 0 Z M0 0 L20 0 L0 20 Z" stroke="url(#silverGrad1)" strokeWidth="1" fill="url(#silverGrad1)" opacity="0.6" />
+              <circle cx="8" cy="8" r="1.5" fill="url(#silverGrad1)" />
+              <path d="M0 0 L0 20 Q0 0 20 0 Z" stroke="#9d8b7a" strokeWidth="0.5" fill="none" opacity="0.3" />
+            </svg>
+            <svg className="absolute top-6 right-6 w-16 h-16" viewBox="0 0 64 64" fill="none">
+              <defs>
+                <linearGradient id="silverGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#e8e8e8" />
+                  <stop offset="50%" stopColor="#c0c0c0" />
+                  <stop offset="100%" stopColor="#a8a8a8" />
+                </linearGradient>
+              </defs>
+              <path d="M64 0 L64 20 Q64 0 44 0 Z M64 0 L44 0 L64 20 Z" stroke="url(#silverGrad2)" strokeWidth="1" fill="url(#silverGrad2)" opacity="0.6" />
+              <circle cx="56" cy="8" r="1.5" fill="url(#silverGrad2)" />
+              <path d="M64 0 L64 20 Q64 0 44 0 Z" stroke="#9d8b7a" strokeWidth="0.5" fill="none" opacity="0.3" />
+            </svg>
+            <svg className="absolute bottom-6 left-6 w-16 h-16" viewBox="0 0 64 64" fill="none">
+              <defs>
+                <linearGradient id="silverGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#e8e8e8" />
+                  <stop offset="50%" stopColor="#c0c0c0" />
+                  <stop offset="100%" stopColor="#a8a8a8" />
+                </linearGradient>
+              </defs>
+              <path d="M0 64 L0 44 Q0 64 20 64 Z M0 64 L20 64 L0 44 Z" stroke="url(#silverGrad3)" strokeWidth="1" fill="url(#silverGrad3)" opacity="0.6" />
+              <circle cx="8" cy="56" r="1.5" fill="url(#silverGrad3)" />
+              <path d="M0 64 L0 44 Q0 64 20 64 Z" stroke="#9d8b7a" strokeWidth="0.5" fill="none" opacity="0.3" />
+            </svg>
+            <svg className="absolute bottom-6 right-6 w-16 h-16" viewBox="0 0 64 64" fill="none">
+              <defs>
+                <linearGradient id="silverGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#e8e8e8" />
+                  <stop offset="50%" stopColor="#c0c0c0" />
+                  <stop offset="100%" stopColor="#a8a8a8" />
+                </linearGradient>
+              </defs>
+              <path d="M64 64 L64 44 Q64 64 44 64 Z M64 64 L44 64 L64 44 Z" stroke="url(#silverGrad4)" strokeWidth="1" fill="url(#silverGrad4)" opacity="0.6" />
+              <circle cx="56" cy="56" r="1.5" fill="url(#silverGrad4)" />
+              <path d="M64 64 L64 44 Q64 64 44 64 Z" stroke="#9d8b7a" strokeWidth="0.5" fill="none" opacity="0.3" />
+            </svg>
+
+            {/* Header with floral ornament */}
+            <motion.div 
+              className="text-center mb-12 space-y-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-amber-100/50">
-            <div className="px-4 py-4 space-y-3">
-              <button onClick={() => scrollToSection('hero')} className="block w-full text-left text-amber-800 hover:text-amber-900 py-2">Start</button>
-              <button onClick={() => scrollToSection('about')} className="block w-full text-left text-amber-800 hover:text-amber-900 py-2">Über Uns</button>
-              <button onClick={() => scrollToSection('schedule')} className="block w-full text-left text-amber-800 hover:text-amber-900 py-2">Ablauf</button>
-              <button onClick={() => scrollToSection('location')} className="block w-full text-left text-amber-800 hover:text-amber-900 py-2">Location</button>
-              <button onClick={() => scrollToSection('dresscode')} className="block w-full text-left text-amber-800 hover:text-amber-900 py-2">Dresscode</button>
-              <button onClick={() => scrollToSection('gallery')} className="block w-full text-left text-amber-800 hover:text-amber-900 py-2">Galerie</button>
-              <button onClick={() => scrollToSection('rsvp')} className="block w-full text-left text-amber-800 hover:text-amber-900 py-2">Zusagen</button>
-            </div>
-          </div>
-        )}
-      </nav>
-
-      {/* Hero Section */}
-      <section id="hero" className="pt-16 min-h-screen flex items-center justify-center px-4 py-12">
-        <div className="max-w-2xl mx-auto">
-          <div className="bg-white shadow-xl border border-amber-100/50">
-            <div className="border-8 border-double border-amber-700/20 m-6 sm:m-8">
-              <div className="p-8 sm:p-12">
-                {/* Decorative Top Ornament */}
-                <div className="text-center mb-8">
-                  <svg className="w-20 h-12 mx-auto text-amber-700/40" viewBox="0 0 100 60" fill="currentColor">
-                    <path d="M50,30 Q40,10 30,30 Q20,50 10,30 Q5,20 0,30 L0,35 Q5,25 10,35 Q20,55 30,35 Q40,15 50,35 Q60,15 70,35 Q80,55 90,35 Q95,25 100,35 L100,30 Q95,20 90,30 Q80,50 70,30 Q60,10 50,30 Z" />
-                  </svg>
-                </div>
-
-                <div className="text-center mb-10">
-                  <p className="tracking-[0.3em] uppercase text-amber-800/70 mb-6">
-                    Sie sind eingeladen
-                  </p>
-                  <p className="tracking-[0.2em] text-amber-800/60 mb-4">
-                    zur Vermählung von
-                  </p>
-                </div>
-
-                <div className="text-center mb-10">
-                  <h1 className="text-5xl sm:text-6xl text-amber-900 mb-2 font-serif italic">
-                    Anna
-                  </h1>
-                  <p className="text-3xl text-amber-800/60 my-4 font-serif">&</p>
-                  <h1 className="text-5xl sm:text-6xl text-amber-900 font-serif italic">
-                    Michael
-                  </h1>
-                </div>
-
-                <div className="flex items-center justify-center my-10">
-                  <div className="h-px w-16 bg-amber-700/30"></div>
-                  <div className="mx-4 w-1.5 h-1.5 rounded-full bg-amber-700/40"></div>
-                  <div className="h-px w-16 bg-amber-700/30"></div>
-                </div>
-
-                <div className="text-center mb-10 space-y-3">
-                  <p className="text-amber-900">Samstag, der fünfzehnte Juni</p>
-                  <p className="text-amber-900">Zweitausendfünfundzwanzig</p>
-                  <p className="text-amber-800/70 mt-4">um vierzehn Uhr</p>
-                </div>
-
-                <div className="flex items-center justify-center my-10">
-                  <div className="h-px w-16 bg-amber-700/30"></div>
-                  <div className="mx-4 w-1.5 h-1.5 rounded-full bg-amber-700/40"></div>
-                  <div className="h-px w-16 bg-amber-700/30"></div>
-                </div>
-
-                <div className="text-center mb-10">
-                  <p className="text-amber-900 mb-3">Schloss Bellevue</p>
-                  <p className="text-amber-800/70">Musterstraße 123</p>
-                  <p className="text-amber-800/70">12345 Musterstadt</p>
-                </div>
-
-                <div className="text-center mt-12">
-                  <svg className="w-20 h-12 mx-auto text-amber-700/40 rotate-180" viewBox="0 0 100 60" fill="currentColor">
-                    <path d="M50,30 Q40,10 30,30 Q20,50 10,30 Q5,20 0,30 L0,35 Q5,25 10,35 Q20,55 30,35 Q40,15 50,35 Q60,15 70,35 Q80,55 90,35 Q95,25 100,35 L100,30 Q95,20 90,30 Q80,50 70,30 Q60,10 50,30 Z" />
-                  </svg>
-                </div>
+              {/* Floral ornament with silver accents */}
+              <div className="flex justify-center mb-6">
+                <svg width="80" height="80" viewBox="0 0 80 80">
+                  <defs>
+                    <linearGradient id="silverFloral" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#e8e8e8" />
+                      <stop offset="50%" stopColor="#c0c0c0" />
+                      <stop offset="100%" stopColor="#b0b0b0" />
+                    </linearGradient>
+                  </defs>
+                  <g fill="none" strokeWidth="1.2">
+                    <circle cx="40" cy="40" r="8" stroke="url(#silverFloral)" opacity="0.5" />
+                    <path d="M40 32 Q38 28 40 24 Q42 28 40 32" stroke="url(#silverFloral)" opacity="0.5" />
+                    <path d="M48 40 Q52 38 56 40 Q52 42 48 40" stroke="url(#silverFloral)" opacity="0.5" />
+                    <path d="M40 48 Q42 52 40 56 Q38 52 40 48" stroke="url(#silverFloral)" opacity="0.5" />
+                    <path d="M32 40 Q28 42 24 40 Q28 38 32 40" stroke="url(#silverFloral)" opacity="0.5" />
+                    <path d="M46 34 Q49 30 53 27 Q50 31 46 34" stroke="url(#silverFloral)" opacity="0.4" />
+                    <path d="M46 46 Q50 49 53 53 Q49 50 46 46" stroke="url(#silverFloral)" opacity="0.4" />
+                    <path d="M34 46 Q30 50 27 53 Q31 49 34 46" stroke="url(#silverFloral)" opacity="0.4" />
+                    <path d="M34 34 Q31 31 27 27 Q30 30 34 34" stroke="url(#silverFloral)" opacity="0.4" />
+                  </g>
+                  <g fill="none" stroke="#9d8b7a" strokeWidth="0.8" opacity="0.25">
+                    <circle cx="40" cy="40" r="8" />
+                    <path d="M40 32 Q38 28 40 24 Q42 28 40 32" />
+                    <path d="M48 40 Q52 38 56 40 Q52 42 48 40" />
+                    <path d="M40 48 Q42 52 40 56 Q38 52 40 48" />
+                    <path d="M32 40 Q28 42 24 40 Q28 38 32 40" />
+                  </g>
+                </svg>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl text-amber-900 mb-4 font-serif">Unsere Geschichte</h2>
-            <div className="flex items-center justify-center my-6">
-              <div className="h-px w-16 bg-amber-700/30"></div>
-              <Heart className="w-5 h-5 mx-4 text-amber-700/40" />
-              <div className="h-px w-16 bg-amber-700/30"></div>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <p className="text-amber-800/80 leading-relaxed">
-                Wir haben uns im Sommer 2019 bei einem Musikfestival kennengelernt. Was als zufällige Begegnung begann, entwickelte sich schnell zu einer tiefen Freundschaft und dann zu der großen Liebe unseres Lebens.
-              </p>
-              <p className="text-amber-800/80 leading-relaxed">
-                Nach sechs wundervollen Jahren voller gemeinsamer Abenteuer, Reisen und unvergesslicher Momente möchten wir nun den nächsten Schritt wagen und unsere Liebe vor Familie und Freunden besiegeln.
-              </p>
-              <p className="text-amber-800/80 leading-relaxed italic">
-                Wir freuen uns darauf, diesen besonderen Tag mit Ihnen zu teilen und gemeinsam zu feiern!
-              </p>
-            </div>
-            <div className="relative">
-              <div className="border-8 border-double border-amber-700/20 p-2">
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwd2VkZGluZyUyMGNvdXBsZXxlbnwxfHx8fDE3NjA0NDk4OTl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Das Brautpaar"
-                  className="w-full h-96 object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Schedule Section */}
-      <section id="schedule" className="py-20 px-4 bg-amber-50/30">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl text-amber-900 mb-4 font-serif">Ablauf des Tages</h2>
-            <div className="flex items-center justify-center my-6">
-              <div className="h-px w-16 bg-amber-700/30"></div>
-              <Clock className="w-5 h-5 mx-4 text-amber-700/40" />
-              <div className="h-px w-16 bg-amber-700/30"></div>
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            {[
-              { time: "14:00 Uhr", title: "Trauung", desc: "Zeremonie in der Schlosskapelle" },
-              { time: "15:00 Uhr", title: "Sektempfang", desc: "Im Schlossgarten bei Sonnenschein" },
-              { time: "16:30 Uhr", title: "Kaffee & Kuchen", desc: "Buffet im großen Saal" },
-              { time: "18:00 Uhr", title: "Fotoshooting", desc: "Gruppenfotos und Portraitaufnahmen" },
-              { time: "19:00 Uhr", title: "Abendessen", desc: "Festliches Menü" },
-              { time: "21:00 Uhr", title: "Eröffnungstanz", desc: "Beginn der Tanzfeier" },
-              { time: "22:00 Uhr", title: "Party", desc: "Feiern bis in die Morgenstunden" }
-            ].map((item, index) => (
-              <Card key={index} className="border-amber-200/50 bg-white">
-                <CardContent className="p-6 flex gap-6 items-start">
-                  <div className="min-w-24 text-amber-900 font-serif">{item.time}</div>
-                  <div className="flex-1">
-                    <h3 className="text-amber-900 mb-1">{item.title}</h3>
-                    <p className="text-amber-800/60">{item.desc}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Location Section */}
-      <section id="location" className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl text-amber-900 mb-4 font-serif">Die Location</h2>
-            <div className="flex items-center justify-center my-6">
-              <div className="h-px w-16 bg-amber-700/30"></div>
-              <MapPin className="w-5 h-5 mx-4 text-amber-700/40" />
-              <div className="h-px w-16 bg-amber-700/30"></div>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <div className="border-8 border-double border-amber-700/20 p-2 mb-6">
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1519167758481-83f29da8c1f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyb21hbnRpYyUyMHZlbnVlJTIwYmFsbHJvb218ZW58MXx8fHwxNzYwNDQ5ODk5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Schloss Bellevue"
-                  className="w-full h-80 object-cover"
-                />
-              </div>
-              <h3 className="text-2xl text-amber-900 mb-4 font-serif">Schloss Bellevue</h3>
-              <div className="space-y-3 text-amber-800/80">
-                <p>Musterstraße 123</p>
-                <p>12345 Musterstadt</p>
-                <div className="pt-4 space-y-2">
-                  <div className="flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-amber-700/60" />
-                    <span>+49 123 456789</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-amber-700/60" />
-                    <span>info@schloss-bellevue.de</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <Tabs defaultValue="car" className="w-full">
-                <TabsList className="grid w-full grid-cols-3 bg-amber-100/50">
-                  <TabsTrigger value="car" className="data-[state=active]:bg-white">Auto</TabsTrigger>
-                  <TabsTrigger value="train" className="data-[state=active]:bg-white">Bahn</TabsTrigger>
-                  <TabsTrigger value="parking" className="data-[state=active]:bg-white">Parken</TabsTrigger>
-                </TabsList>
-                <TabsContent value="car" className="mt-6 text-amber-800/80">
-                  <p className="mb-3">Von der Autobahn A1:</p>
-                  <p>Abfahrt Musterstadt-Nord, dann der Beschilderung Richtung Zentrum folgen. Nach ca. 5 km sehen Sie das Schloss auf der rechten Seite.</p>
-                </TabsContent>
-                <TabsContent value="train" className="mt-6 text-amber-800/80">
-                  <p className="mb-3">Bahnhof Musterstadt Hauptbahnhof:</p>
-                  <p>Vom Hauptbahnhof aus erreichen Sie das Schloss in 15 Minuten mit dem Taxi oder Bus Linie 42 (Haltestelle "Schloss Bellevue").</p>
-                </TabsContent>
-                <TabsContent value="parking" className="mt-6 text-amber-800/80">
-                  <p className="mb-3">Parkplätze:</p>
-                  <p>Kostenlose Parkplätze stehen auf dem Schlossgelände zur Verfügung. Bitte folgen Sie der Beschilderung "Gäste-Parkplatz".</p>
-                </TabsContent>
-              </Tabs>
-
-              <Card className="bg-amber-50/30 border-amber-200/50 mt-6">
-                <CardContent className="p-6">
-                  <h4 className="text-amber-900 mb-3">Übernachtungsmöglichkeiten</h4>
-                  <div className="space-y-3 text-amber-800/80">
-                    <div>
-                      <p className="text-amber-900">Hotel Rosengarten</p>
-                      <p>Gartenstraße 45, 12345 Musterstadt</p>
-                      <p>Tel: +49 123 456700</p>
-                    </div>
-                    <div>
-                      <p className="text-amber-900">Pension Altstadtblick</p>
-                      <p>Marktplatz 12, 12345 Musterstadt</p>
-                      <p>Tel: +49 123 456800</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Dresscode Section */}
-      <section id="dresscode" className="py-20 px-4 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl text-amber-900 mb-4 font-serif">Dresscode</h2>
-            <div className="flex items-center justify-center my-6">
-              <div className="h-px w-16 bg-amber-700/30"></div>
-              <div className="mx-4 w-1.5 h-1.5 rounded-full bg-amber-700/40"></div>
-              <div className="h-px w-16 bg-amber-700/30"></div>
-            </div>
-          </div>
-
-          <Card className="border-2 border-amber-200/50 bg-gradient-to-br from-white to-amber-50/30">
-            <CardContent className="p-8 sm:p-12">
-              <div className="max-w-2xl mx-auto space-y-8">
-                <p className="text-amber-900 text-center text-xl">
-                  Wir wünschen uns festliche Kleidung
+              <div className="space-y-2">
+                <p className="text-[#8b7355] tracking-[0.3em] uppercase text-xs opacity-60 font-serif">
+                  {t.invitation}
                 </p>
-                
-                <div className="grid sm:grid-cols-2 gap-8 mt-8">
-                  <div className="text-center p-6 bg-white/60 rounded-lg border border-amber-200/50">
-                    <div className="mb-4">
-                      <svg className="w-16 h-16 mx-auto text-amber-700/60" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C10.9 2 10 2.9 10 4C10 5.1 10.9 6 12 6C13.1 6 14 5.1 14 4C14 2.9 13.1 2 12 2M16 8H15.5L15 6.5C14.8 5.6 14 5 13.1 5H10.9C10 5 9.2 5.6 9 6.5L8.5 8H8C6.9 8 6 8.9 6 10V22H8V16H10V22H14V16H16V22H18V10C18 8.9 17.1 8 16 8Z"/>
-                      </svg>
-                    </div>
-                    <p className="text-amber-900 mb-3">Damen</p>
-                    <p className="text-amber-800/70">Cocktailkleider, elegante Abendgarderobe</p>
-                  </div>
-                  
-                  <div className="text-center p-6 bg-white/60 rounded-lg border border-amber-200/50">
-                    <div className="mb-4">
-                      <svg className="w-16 h-16 mx-auto text-amber-700/60" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M6 2L4 6V11H3V22H9V17H15V22H21V11H20V6L18 2H16L17 6H7L8 2H6M13 11V15H11V11H13Z"/>
-                      </svg>
-                    </div>
-                    <p className="text-amber-900 mb-3">Herren</p>
-                    <p className="text-amber-800/70">Anzug, Smoking oder festliche Garderobe</p>
-                  </div>
-                </div>
-
-                <div className="mt-8 text-center p-6 bg-amber-50/50 rounded-lg border border-amber-200/30">
-                  <p className="text-amber-800/80 italic">
-                    Bitte keine weißen Outfits – dieser Farbton ist der Braut vorbehalten
-                  </p>
-                </div>
               </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
 
-      {/* Gallery Section */}
-      <section id="gallery" className="py-20 px-4 bg-amber-50/30">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl text-amber-900 mb-4 font-serif">Impressionen</h2>
-            <div className="flex items-center justify-center my-6">
-              <div className="h-px w-16 bg-amber-700/30"></div>
-              <div className="mx-4 w-1.5 h-1.5 rounded-full bg-amber-700/40"></div>
-              <div className="h-px w-16 bg-amber-700/30"></div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwd2VkZGluZyUyMGNvdXBsZXxlbnwxfHx8fDE3NjA0NDk4OTl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-              "https://images.unsplash.com/photo-1519167758481-83f29da8c1f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyb21hbnRpYyUyMHZlbnVlJTIwYmFsbHJvb218ZW58MXx8fHwxNzYwNDQ5ODk5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-              "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWRkaW5nJTIwdGFibGUlMjBzZXR0aW5nfGVufDF8fHx8MTc2MDQ0OTg5OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-              "https://images.unsplash.com/photo-1522413452208-996ff3f3e740?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaHVyY2glMjB3ZWRkaW5nJTIwY2VyZW1vbnl8ZW58MXx8fHwxNzYwNDQ5OTAwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-              "https://images.unsplash.com/photo-1519167758481-83f29da8c1f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyb21hbnRpYyUyMHZlbnVlJTIwYmFsbHJvb218ZW58MXx8fHwxNzYwNDQ5ODk5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-              "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwd2VkZGluZyUyMGNvdXBsZXxlbnwxfHx8fDE3NjA0NDk4OTl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-            ].map((src, index) => (
-              <div key={index} className="group relative overflow-hidden border-4 border-white shadow-lg hover:shadow-xl transition-shadow">
-                <ImageWithFallback
-                  src={src}
-                  alt={`Galeriebild ${index + 1}`}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* RSVP Section */}
-      <section id="rsvp" className="py-20 px-4 bg-white">
-        <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl text-amber-900 mb-4 font-serif">Zusage</h2>
-            <div className="flex items-center justify-center my-6">
-              <div className="h-px w-16 bg-amber-700/30"></div>
-              <Users className="w-5 h-5 mx-4 text-amber-700/40" />
-              <div className="h-px w-16 bg-amber-700/30"></div>
-            </div>
-            <p className="text-amber-800/70 mt-6">
-              Bitte teilen Sie uns bis zum 1. Mai 2025 mit, ob Sie an unserer Hochzeit teilnehmen können.
-            </p>
-          </div>
-
-          <Card className="border-amber-200/50">
-            <CardContent className="p-8">
-              <form onSubmit={handleRsvpSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name" className="text-amber-900">Name *</Label>
-                  <Input
-                    id="name"
-                    required
-                    value={rsvpData.name}
-                    onChange={(e) => setRsvpData({...rsvpData, name: e.target.value})}
-                    className="border-amber-200 focus:border-amber-400"
-                  />
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-amber-900">E-Mail *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      required
-                      value={rsvpData.email}
-                      onChange={(e) => setRsvpData({...rsvpData, email: e.target.value})}
-                      className="border-amber-200 focus:border-amber-400"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-amber-900">Telefon</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={rsvpData.phone}
-                      onChange={(e) => setRsvpData({...rsvpData, phone: e.target.value})}
-                      className="border-amber-200 focus:border-amber-400"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <Label className="text-amber-900">Teilnahme *</Label>
-                  <RadioGroup 
-                    value={rsvpData.attendance}
-                    onValueChange={(value) => setRsvpData({...rsvpData, attendance: value})}
-                  >
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="yes" id="yes" />
-                      <Label htmlFor="yes" className="text-amber-800/80">Ja, ich komme gerne</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="no" id="no" />
-                      <Label htmlFor="no" className="text-amber-800/80">Leider kann ich nicht teilnehmen</Label>
-                    </div>
-                  </RadioGroup>
-                </div>
-
-                {rsvpData.attendance === "yes" && (
-                  <div className="space-y-2">
-                    <Label htmlFor="guests" className="text-amber-900">Anzahl Personen (inkl. Ihnen)</Label>
-                    <Input
-                      id="guests"
-                      type="number"
-                      min="1"
-                      max="5"
-                      value={rsvpData.guests}
-                      onChange={(e) => setRsvpData({...rsvpData, guests: e.target.value})}
-                      className="border-amber-200 focus:border-amber-400"
-                    />
-                  </div>
-                )}
-
-                <div className="space-y-2">
-                  <Label htmlFor="message" className="text-amber-900">Nachricht an uns</Label>
-                  <Textarea
-                    id="message"
-                    rows={4}
-                    value={rsvpData.message}
-                    onChange={(e) => setRsvpData({...rsvpData, message: e.target.value})}
-                    placeholder="Besondere Wünsche, Allergien oder einfach ein paar liebe Worte..."
-                    className="border-amber-200 focus:border-amber-400 resize-none"
-                  />
-                </div>
-
-                <Button 
-                  type="submit"
-                  className="w-full bg-amber-800 hover:bg-amber-900 text-white py-6"
+              <div className="space-y-3 my-8">
+                <motion.h1 
+                  className="text-[#6b5d4f] text-5xl md:text-6xl tracking-wide"
+                  style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
                 >
-                  Zusage senden
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+                  Grazielle Lisboa Pereira
+                </motion.h1>
+                <div className="flex items-center justify-center gap-4">
+                  <div className="h-px w-12 bg-gradient-to-r from-transparent via-[#c0c0c0]/40 to-[#9d8b7a]/30"></div>
+                  <span className="text-[#9d8b7a] text-2xl relative" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    <span className="absolute inset-0 text-[#c0c0c0]/30 blur-[1px]">&</span>
+                    <span className="relative">&</span>
+                  </span>
+                  <div className="h-px w-12 bg-gradient-to-l from-transparent via-[#c0c0c0]/40 to-[#9d8b7a]/30"></div>
+                </div>
+                <motion.h1 
+                  className="text-[#6b5d4f] text-5xl md:text-6xl tracking-wide"
+                  style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6, duration: 0.8 }}
+                >
+                  Helge Dieter Grub
+                </motion.h1>
+              </div>
 
-          {/* FAQ Section */}
-          <div className="mt-16">
-            <h3 className="text-2xl text-amber-900 mb-8 text-center font-serif">Häufige Fragen</h3>
-            <Accordion type="single" collapsible className="space-y-4">
-              <AccordionItem value="item-2" className="border border-amber-200/50 rounded-lg px-6 bg-white">
-                <AccordionTrigger className="text-amber-900 hover:text-amber-800">
-                  Kann ich meine Kinder mitbringen?
-                </AccordionTrigger>
-                <AccordionContent className="text-amber-800/70">
-                  Wir möchten unseren besonderen Tag gerne in erwachsener Runde feiern. Wir bitten daher um Verständnis, dass wir keine Kinderbetreuung anbieten können.
-                </AccordionContent>
-              </AccordionItem>
+              <p className="text-[#8b7355]/80 max-w-md mx-auto text-sm leading-relaxed" style={{ fontFamily: "'Crimson Text', serif" }}>
+                {t.inviteText}
+              </p>
+            </motion.div>
 
-              <AccordionItem value="item-3" className="border border-amber-200/50 rounded-lg px-6 bg-white">
-                <AccordionTrigger className="text-amber-900 hover:text-amber-800">
-                  Was wünscht ihr euch zur Hochzeit?
-                </AccordionTrigger>
-                <AccordionContent className="text-amber-800/70">
-                  Das größte Geschenk ist eure Anwesenheit! Wenn ihr uns dennoch etwas schenken möchtet, freuen wir uns über einen Beitrag zu unserer Hochzeitsreise nach Italien.
-                </AccordionContent>
-              </AccordionItem>
+            {/* Ornamental divider with silver */}
+            <div className="flex items-center justify-center gap-3 my-10">
+              <div className="h-px w-20 bg-gradient-to-r from-transparent via-[#c0c0c0]/40 to-transparent"></div>
+              <svg width="12" height="12" viewBox="0 0 12 12">
+                <defs>
+                  <radialGradient id="silverDot1">
+                    <stop offset="0%" stopColor="#ffffff" />
+                    <stop offset="50%" stopColor="#c0c0c0" />
+                    <stop offset="100%" stopColor="#a8a8a8" />
+                  </radialGradient>
+                </defs>
+                <circle cx="6" cy="6" r="1.5" fill="url(#silverDot1)" opacity="0.7" />
+                <circle cx="6" cy="6" r="5" stroke="#c0c0c0" strokeWidth="0.5" fill="none" opacity="0.5" />
+                <circle cx="6" cy="6" r="5" stroke="#9d8b7a" strokeWidth="0.3" fill="none" opacity="0.3" />
+              </svg>
+              <div className="h-px w-20 bg-gradient-to-l from-transparent via-[#c0c0c0]/40 to-transparent"></div>
+            </div>
 
-              <AccordionItem value="item-4" className="border border-amber-200/50 rounded-lg px-6 bg-white">
-                <AccordionTrigger className="text-amber-900 hover:text-amber-800">
-                  Gibt es vegetarische/vegane Optionen?
-                </AccordionTrigger>
-                <AccordionContent className="text-amber-800/70">
-                  Selbstverständlich! Bitte teilt uns eure Ernährungswünsche oder Allergien im RSVP-Formular mit.
-                </AccordionContent>
-              </AccordionItem>
+            {/* Event details */}
+            <motion.div 
+              className="space-y-6 mb-10 max-w-lg mx-auto"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7, duration: 0.8 }}
+            >
+              <div className="flex items-start gap-4 group">
+                <div className="w-8 h-8 rounded-full bg-[#9d8b7a]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#9d8b7a]/20 transition-colors">
+                  <Calendar className="w-4 h-4 text-[#8b7355]" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.dateLabel}</p>
+                  <p className="text-[#6b5d4f]">{t.date}</p>
+                </div>
+              </div>
 
-              <AccordionItem value="item-5" className="border border-amber-200/50 rounded-lg px-6 bg-white">
-                <AccordionTrigger className="text-amber-900 hover:text-amber-800">
-                  Wird es eine Übernachtungsmöglichkeit geben?
-                </AccordionTrigger>
-                <AccordionContent className="text-amber-800/70">
-                  Wir haben Zimmerkontingente in nahegelegenen Hotels reserviert. Details findet ihr im Abschnitt "Location".
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+              <div className="flex items-start gap-4 group">
+                <div className="w-8 h-8 rounded-full bg-[#9d8b7a]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#9d8b7a]/20 transition-colors">
+                  <Clock className="w-4 h-4 text-[#8b7355]" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.timeLabel}</p>
+                  <p className="text-[#6b5d4f]">{t.time}</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 group">
+                <div className="w-8 h-8 rounded-full bg-[#9d8b7a]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#9d8b7a]/20 transition-colors">
+                  <MapPin className="w-4 h-4 text-[#8b7355]" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.location}</p>
+                  <p className="text-[#6b5d4f] mb-1">Schloss Bellevue</p>
+                  <p className="text-[#8b7355]/70 text-sm">{t.address}</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Ornamental divider with silver */}
+            <div className="flex items-center justify-center gap-3 my-10">
+              <div className="h-px w-20 bg-gradient-to-r from-transparent via-[#c0c0c0]/40 to-transparent"></div>
+              <svg width="12" height="12" viewBox="0 0 12 12">
+                <defs>
+                  <radialGradient id="silverDot2">
+                    <stop offset="0%" stopColor="#ffffff" />
+                    <stop offset="50%" stopColor="#c0c0c0" />
+                    <stop offset="100%" stopColor="#a8a8a8" />
+                  </radialGradient>
+                </defs>
+                <circle cx="6" cy="6" r="1.5" fill="url(#silverDot2)" opacity="0.7" />
+                <circle cx="6" cy="6" r="5" stroke="#c0c0c0" strokeWidth="0.5" fill="none" opacity="0.5" />
+                <circle cx="6" cy="6" r="5" stroke="#9d8b7a" strokeWidth="0.3" fill="none" opacity="0.3" />
+              </svg>
+              <div className="h-px w-20 bg-gradient-to-l from-transparent via-[#c0c0c0]/40 to-transparent"></div>
+            </div>
+
+            {/* Dresscode */}
+            <motion.div 
+              className="mb-10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+            >
+              <div className="text-center mb-6">
+                <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-4">{t.dresscode}</p>
+                <p className="text-[#6b5d4f] mb-6">{t.dresscodeText}</p>
+              </div>
+              
+              {/* Elegant dress and suit icons */}
+              <div className="flex items-center justify-center gap-12 mb-8">
+                {/* Dress Icon */}
+                <motion.div 
+                  className="text-center"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <svg width="60" height="60" viewBox="0 0 60 60" fill="none" className="mx-auto text-[#8b7355]/70">
+                    <path d="M30 10L23 17V22L18 55H42L37 22V17L30 10Z" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M23 22H37" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+                    <path d="M30 10C30 10 27.5 15 25 17.5C22.5 20 23 22 23 22" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+                    <path d="M30 10C30 10 32.5 15 35 17.5C37.5 20 37 22 37 22" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+                    <line x1="20" y1="35" x2="40" y2="35" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.3"/>
+                    <line x1="19" y1="45" x2="41" y2="45" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.3"/>
+                  </svg>
+                </motion.div>
+
+                {/* Suit Icon */}
+                <motion.div 
+                  className="text-center"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <svg width="60" height="60" viewBox="0 0 60 60" fill="none" className="mx-auto text-[#8b7355]/70">
+                    <path d="M30 15L22 20V55H38V20L30 15Z" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M22 20L19 55" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+                    <path d="M38 20L41 55" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+                    <path d="M25 25L30 40L35 25" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="30" cy="33" r="1.5" fill="currentColor"/>
+                    <circle cx="30" cy="39" r="1.5" fill="currentColor"/>
+                    <path d="M27 20L30 15L33 20" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </motion.div>
+              </div>
+
+              {/* Color Palette */}
+              <div className="text-center">
+                <p className="text-[#8b7355]/60 text-xs mb-4">{t.colorSuggestion}</p>
+                <div className="flex justify-center gap-3">
+                  <motion.div 
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    className="w-12 h-12 rounded-full bg-gradient-to-br from-[#7dd3c0] to-[#5fb8a6] shadow-lg border-2 border-white/60"
+                  ></motion.div>
+                  <motion.div 
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    className="w-12 h-12 rounded-full bg-gradient-to-br from-[#4ecdc4] to-[#44a39c] shadow-lg border-2 border-white/60"
+                  ></motion.div>
+                  <motion.div 
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    className="w-12 h-12 rounded-full bg-gradient-to-br from-[#45b7d1] to-[#3498a8] shadow-lg border-2 border-white/60"
+                  ></motion.div>
+                  <motion.div 
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    className="w-12 h-12 rounded-full bg-gradient-to-br from-[#5fa8d3] to-[#4682a9] shadow-lg border-2 border-white/60"
+                  ></motion.div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Ornamental divider with silver */}
+            <div className="flex items-center justify-center gap-3 my-10">
+              <div className="h-px w-20 bg-gradient-to-r from-transparent via-[#c0c0c0]/40 to-transparent"></div>
+              <svg width="12" height="12" viewBox="0 0 12 12">
+                <defs>
+                  <radialGradient id="silverDot3">
+                    <stop offset="0%" stopColor="#ffffff" />
+                    <stop offset="50%" stopColor="#c0c0c0" />
+                    <stop offset="100%" stopColor="#a8a8a8" />
+                  </radialGradient>
+                </defs>
+                <circle cx="6" cy="6" r="1.5" fill="url(#silverDot3)" opacity="0.7" />
+                <circle cx="6" cy="6" r="5" stroke="#c0c0c0" strokeWidth="0.5" fill="none" opacity="0.5" />
+                <circle cx="6" cy="6" r="5" stroke="#9d8b7a" strokeWidth="0.3" fill="none" opacity="0.3" />
+              </svg>
+              <div className="h-px w-20 bg-gradient-to-l from-transparent via-[#c0c0c0]/40 to-transparent"></div>
+            </div>
+
+            {/* RSVP and Contact */}
+            <motion.div 
+              className="space-y-6 mb-10 max-w-lg mx-auto"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.9, duration: 0.8 }}
+            >
+              <div className="flex items-start gap-4 group">
+                <div className="w-8 h-8 rounded-full bg-[#9d8b7a]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#9d8b7a]/20 transition-colors">
+                  <Calendar className="w-4 h-4 text-[#8b7355]" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.rsvpLabel}</p>
+                  <p className="text-[#6b5d4f]">{t.rsvpDate}</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 group">
+                <div className="w-8 h-8 rounded-full bg-[#9d8b7a]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#9d8b7a]/20 transition-colors">
+                  <Phone className="w-4 h-4 text-[#8b7355]" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.contact}</p>
+                  <p className="text-[#6b5d4f]">{t.phone}</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Ornamental divider with silver */}
+            <div className="flex items-center justify-center gap-3 my-10">
+              <div className="h-px w-20 bg-gradient-to-r from-transparent via-[#c0c0c0]/40 to-transparent"></div>
+              <svg width="12" height="12" viewBox="0 0 12 12">
+                <defs>
+                  <radialGradient id="silverDot4">
+                    <stop offset="0%" stopColor="#ffffff" />
+                    <stop offset="50%" stopColor="#c0c0c0" />
+                    <stop offset="100%" stopColor="#a8a8a8" />
+                  </radialGradient>
+                </defs>
+                <circle cx="6" cy="6" r="1.5" fill="url(#silverDot4)" opacity="0.7" />
+                <circle cx="6" cy="6" r="5" stroke="#c0c0c0" strokeWidth="0.5" fill="none" opacity="0.5" />
+                <circle cx="6" cy="6" r="5" stroke="#9d8b7a" strokeWidth="0.3" fill="none" opacity="0.3" />
+              </svg>
+              <div className="h-px w-20 bg-gradient-to-l from-transparent via-[#c0c0c0]/40 to-transparent"></div>
+            </div>
+
+            {/* QR Code */}
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 0.8 }}
+            >
+              <p className="text-[#8b7355]/70 text-sm mb-6">{t.qrText}</p>
+              <motion.div 
+                className="inline-block p-8 bg-white/50 backdrop-blur-sm rounded-lg shadow-[0_8px_30px_rgba(139,115,85,0.12)] border-2 border-transparent bg-clip-padding relative"
+                style={{
+                  backgroundImage: 'linear-gradient(white, white), linear-gradient(135deg, #e8e8e8, #c0c0c0, #a8a8a8)',
+                  backgroundOrigin: 'border-box',
+                  backgroundClip: 'padding-box, border-box'
+                }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <div className="w-40 h-40 flex items-center justify-center bg-gradient-to-br from-[#fdfcfa] to-[#f5f1ea] border-2 border-dashed border-[#c0c0c0]/40 rounded-md relative">
+                  <div className="absolute inset-0 border border-dashed border-[#9d8b7a]/20 rounded-md"></div>
+                  <QrCode className="w-20 h-20 text-[#9d8b7a]/30 relative z-10" />
+                </div>
+              </motion.div>
+              <p className="text-[#8b7355]/60 text-xs mt-4 tracking-wide">{t.qrScan}</p>
+            </motion.div>
           </div>
+            </div>
+          </div>
+
+          {/* Shadow effect */}
+          <div className="absolute inset-0 rounded-sm shadow-[0_30px_90px_rgba(139,115,85,0.08)] pointer-events-none"></div>
         </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-amber-900 text-amber-50 py-12 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-6">
-            <p className="text-2xl font-serif mb-2">Anna & Michael</p>
-            <p className="text-amber-200">15. Juni 2025</p>
-          </div>
-          <Separator className="my-8 bg-amber-700" />
-          <p className="text-amber-200">
-            Wir freuen uns auf einen unvergesslichen Tag mit Ihnen!
-          </p>
-          <div className="mt-8 text-amber-300">
-            <p>Bei Fragen kontaktieren Sie uns gerne:</p>
-            <p className="mt-2">anna.michael.hochzeit@email.de</p>
-          </div>
-        </div>
-      </footer>
+      </motion.div>
     </div>
   );
 }
