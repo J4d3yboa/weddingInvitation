@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Heart, MapPin, Calendar, Clock, Users, Mail, Phone } from "lucide-react";
+import { Menu, X, Heart, MapPin, Clock, Users, Mail, Phone } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
