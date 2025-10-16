@@ -148,6 +148,13 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
+              style={{
+                opacity: 1,
+                borderColor: "silver",
+                borderWidth: "medium",
+                paddingLeft: "30px",
+                paddingRight: "30px"
+               }}
             >
               {/* Floral ornament with silver accents */}
               <div className="flex justify-center mb-6">
@@ -185,35 +192,28 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
                   {t.invitation}
                 </p>
               </div>
+<div className="relative flex items-center justify-center my-8" style={{height: "400px"}}>
+  {/* Hintergrundbild */}
+  <img 
+    src="Strand.png" 
+    alt="Hintergrund" 
+    className="absolute inset-0 w-full h-full object-cover opacity-40 z-0"
+    style={{pointerEvents: "none"}}
+  />
+  {/* Text über dem Bild */}
+  <div className="relative z-10 space-y-3">
+    <motion.h1 
+      className="text-[#6b5d4f] text-5xl md:text-6xl tracking-wide"
+      style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5, duration: 0.8 }}
+    >
+      Grazielle & Helge
+    </motion.h1>
+  </div>
+</div>
 
-              <div className="space-y-3 my-8">
-                <motion.h1 
-                  className="text-[#6b5d4f] text-5xl md:text-6xl tracking-wide"
-                  style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                >
-                  Grazielle Lisboa Pereira
-                </motion.h1>
-                <div className="flex items-center justify-center gap-4">
-                  <div className="h-px w-12 bg-gradient-to-r from-transparent via-[#c0c0c0]/40 to-[#9d8b7a]/30"></div>
-                  <span className="text-[#9d8b7a] text-2xl relative" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    <span className="absolute inset-0 text-[#c0c0c0]/30 blur-[1px]">&</span>
-                    <span className="relative">&</span>
-                  </span>
-                  <div className="h-px w-12 bg-gradient-to-l from-transparent via-[#c0c0c0]/40 to-[#9d8b7a]/30"></div>
-                </div>
-                <motion.h1 
-                  className="text-[#6b5d4f] text-5xl md:text-6xl tracking-wide"
-                  style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6, duration: 0.8 }}
-                >
-                  Helge Dieter Grub
-                </motion.h1>
-              </div>
 
               <p className="text-[#8b7355]/80 max-w-md mx-auto text-sm leading-relaxed" style={{ fontFamily: "'Crimson Text', serif" }}>
                 {t.inviteText}
