@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { QrCode, MapPin, Calendar, Clock, Phone } from 'lucide-react';
+import  strandImage  from "../assets/Strand.png"
 
 interface WeddingInvitationProps {
   language: 'de' | 'pt';
@@ -195,7 +196,7 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
 <div className="relative flex items-center justify-center my-8" style={{height: "400px"}}>
   {/* Hintergrundbild */}
   <img 
-    src="Strand.png" 
+    src={strandImage} 
     alt="Hintergrund" 
     className="absolute inset-0 w-full h-full object-cover opacity-40 z-0"
     style={{pointerEvents: "none"}}
