@@ -193,18 +193,18 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
                   {t.invitation}
                 </p>
               </div>
-<div className="relative flex items-center justify-center my-8" style={{height: "400px"}}>
+<div className="relative flex items-center justify-center my-8" style={{ height: "60vh", maxHeight: "400px", minHeight: "250px" }}>
   {/* Hintergrundbild */}
-  <img 
-    src={strandImage} 
-    alt="Hintergrund" 
+  <img
+    src={strandImage}
+    alt="Hintergrund"
     className="absolute inset-0 w-full h-full object-cover opacity-40 z-0"
-    style={{pointerEvents: "none"}}
+    style={{ pointerEvents: "none" }}
   />
   {/* Text über dem Bild */}
-  <div className="relative z-10 space-y-3">
-    <motion.h1 
-      className="text-[#6b5d4f] text-5xl md:text-6xl tracking-wide"
+  <div className="relative z-10 space-y-3 px-4 text-center">
+    <motion.h1
+      className="text-[#6b5d4f] text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-wide"
       style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
@@ -214,6 +214,7 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
     </motion.h1>
   </div>
 </div>
+
 
 
               <p className="text-[#8b7355]/80 max-w-md mx-auto text-sm leading-relaxed" style={{ fontFamily: "'Crimson Text', serif" }}>
