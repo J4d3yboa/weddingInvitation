@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { WeddingInvitation } from './components/WeddingInvitation';
-import { DaySchedule } from './components/DaySchedule';
-import { FAQ } from './components/FAQ';
+//import { DaySchedule } from './components/DaySchedule';
+//import { FAQ } from './components/FAQ';
 import { Button } from './components/ui/button';
 import { Languages } from 'lucide-react';
 
