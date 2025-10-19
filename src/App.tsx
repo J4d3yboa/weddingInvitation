@@ -54,15 +54,15 @@ export default function App() {
           <WeddingInvitation language={language} />
         </section>
 
-        {/* Day Schedule */}
+        {/* {/* Day Schedule }
         <section id="schedule">
           <DaySchedule language={language} />
-        </section>
+        </section>*/}
 
-        {/* FAQ */}
+        {/* {/* FAQ }
         <section id="faq">
           <FAQ language={language} />
-        </section>
+        </section>*/}
 
         {/* Footer */}
         <footer className="py-16 text-center bg-gradient-to-br from-[#f0ebe3] via-[#faf8f3] to-[#f5f1ea] border-t border-[#d4c5b0]/20">

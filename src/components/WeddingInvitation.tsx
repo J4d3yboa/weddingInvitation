@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
-import { QrCode, MapPin, Calendar, Clock, Phone } from 'lucide-react';
-import  strandImage  from "../assets/Strand.png"
+import { MapPin, Calendar, Clock, Phone } from 'lucide-react';
+import  strandImage  from "../assets/Strand.png";
+import qrCodeImage from "../assets/qr-code.png";
+import suitImage from "../assets/suit.png";
+import cocktailDressImage from "../assets/cocktailDress.png";
 
 interface WeddingInvitationProps {
   language: 'de' | 'pt';
@@ -9,9 +12,9 @@ interface WeddingInvitationProps {
 const translations = {
   de: {
     invitation: "Wir heiraten!",
-    inviteText: "haben die Freude, Sie zu ihrer Hochzeit einzuladen",
+    inviteText: "laden dich/euch ein mit uns zu feiern",
     location: "Location",
-    address: "Zehnthof: Badstraße 7, 76835 Gleisweiler",
+    address: "Badstraße 7, 76835 Gleisweiler",
     dateLabel: "Datum",
     date: "27. Juni 2026",
     timeLabel: "Uhrzeit",
@@ -22,7 +25,7 @@ const translations = {
     rsvpLabel: "Zu-/Absage bis",
     rsvpDate: "15. April 2026",
     contact: "Kontakt",
-    phone: "+49 123 456789",
+    phone: "+49 160 94830553",
     qrText: "Für weitere Informationen",
     qrScan: "QR-Code einscannen"
   },
@@ -30,7 +33,7 @@ const translations = {
     invitation: "Nós vamos casar!",
     inviteText: "têm o prazer de convidá-lo para o seu casamento",
     location: "Local",
-    address: "Zehnthof: Badstraße 7, 76835 Gleisweiler",
+    address: "Badstraße 7, 76835 Gleisweiler",
     dateLabel: "Data",
     date: "15 de junho de 2026",
     timeLabel: "Horário",
@@ -41,7 +44,7 @@ const translations = {
     rsvpLabel: "Confirmação até",
     rsvpDate: "15 de abril de 2026",
     contact: "Contato",
-    phone: "+49 123 456789",
+    phone: "+49 160 94830553",
     qrText: "Para mais informações",
     qrScan: "Escaneie o código QR"
   }
@@ -273,7 +276,7 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
                 </div>
                 <div className="flex-1">
                   <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.location}</p>
-                  <p className="text-[#6b5d4f] mb-1">Schloss Bellevue</p>
+                  <p className="text-[#6b5d4f] mb-1">Zehnthof</p>
                   <p className="text-[#8b7355]/70 text-sm">{t.address}</p>
                 </div>
               </div>
@@ -311,38 +314,35 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
               
               {/* Elegant dress and suit icons */}
               <div className="flex items-center justify-center gap-12 mb-8">
-                {/* Dress Icon */}
-                <motion.div 
-                  className="text-center"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <svg width="60" height="60" viewBox="0 0 60 60" fill="none" className="mx-auto text-[#8b7355]/70">
-                    <path d="M30 10L23 17V22L18 55H42L37 22V17L30 10Z" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M23 22H37" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
-                    <path d="M30 10C30 10 27.5 15 25 17.5C22.5 20 23 22 23 22" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
-                    <path d="M30 10C30 10 32.5 15 35 17.5C37.5 20 37 22 37 22" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
-                    <line x1="20" y1="35" x2="40" y2="35" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.3"/>
-                    <line x1="19" y1="45" x2="41" y2="45" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.3"/>
-                  </svg>
-                </motion.div>
+               {/* Dress Icon – Elegant Alternative */}
+{/* Dress Icon – Elegant Cocktailkleid Style */}
+<motion.div
+  className="text-center"
+  whileHover={{ scale: 1.05 }}
+  transition={{ type: "spring", stiffness: 300 }}
+>
+  <img
+    src={cocktailDressImage} // sollte ein separater Bildausschnitt NUR vom Kleid sein!
+    alt="Cocktailkleid"
+    className="mx-auto w-16 h-auto"
+    style={{ objectFit: 'contain' }}
+  />
+</motion.div>
 
-                {/* Suit Icon */}
-                <motion.div 
-                  className="text-center"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <svg width="60" height="60" viewBox="0 0 60 60" fill="none" className="mx-auto text-[#8b7355]/70">
-                    <path d="M30 15L22 20V55H38V20L30 15Z" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M22 20L19 55" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
-                    <path d="M38 20L41 55" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
-                    <path d="M25 25L30 40L35 25" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                    <circle cx="30" cy="33" r="1.5" fill="currentColor"/>
-                    <circle cx="30" cy="39" r="1.5" fill="currentColor"/>
-                    <path d="M27 20L30 15L33 20" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </motion.div>
+<motion.div
+  className="text-center"
+  whileHover={{ scale: 1.05 }}
+  transition={{ type: "spring", stiffness: 300 }}
+>
+  <img
+    src={suitImage} // sollte ein separater Bildausschnitt NUR vom Anzug sein!
+    alt="Anzug"
+    className="mx-auto w-16 h-auto"
+    style={{ objectFit: 'contain' }}
+  />
+</motion.div>
+
+
               </div>
 
               {/* Color Palette */}
@@ -357,14 +357,14 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
                     whileHover={{ scale: 1.1, y: -2 }}
                     className="w-12 h-12 rounded-full bg-gradient-to-br from-[#4ecdc4] to-[#44a39c] shadow-lg border-2 border-white/60"
                   ></motion.div>
-                  <motion.div 
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    className="w-12 h-12 rounded-full bg-gradient-to-br from-[#45b7d1] to-[#3498a8] shadow-lg border-2 border-white/60"
-                  ></motion.div>
-                  <motion.div 
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    className="w-12 h-12 rounded-full bg-gradient-to-br from-[#5fa8d3] to-[#4682a9] shadow-lg border-2 border-white/60"
-                  ></motion.div>
+<motion.div 
+  whileHover={{ scale: 1.1, y: -2 }}
+  className="w-12 h-12 rounded-full bg-gradient-to-br from-[#238d90] to-[#30a6ad] shadow-lg border-2 border-white/60"
+></motion.div>
+<motion.div 
+  whileHover={{ scale: 1.1, y: -2 }}
+  className="w-12 h-12 rounded-full bg-gradient-to-br from-[#155e63] to-[#227676] shadow-lg border-2 border-white/60"
+></motion.div>
                 </div>
               </div>
             </motion.div>
@@ -453,7 +453,11 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
               >
                 <div className="w-40 h-40 flex items-center justify-center bg-gradient-to-br from-[#fdfcfa] to-[#f5f1ea] border-2 border-dashed border-[#c0c0c0]/40 rounded-md relative">
                   <div className="absolute inset-0 border border-dashed border-[#9d8b7a]/20 rounded-md"></div>
-                  <QrCode className="w-20 h-20 text-[#9d8b7a]/30 relative z-10" />
+                  <img 
+                    src={qrCodeImage}
+                    alt="QR-Code" 
+                    className="w-20 h-20 object-contain relative z-10" 
+                   />
                 </div>
               </motion.div>
               <p className="text-[#8b7355]/60 text-xs mt-4 tracking-wide">{t.qrScan}</p>
