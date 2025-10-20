@@ -13,6 +13,7 @@ const translations = {
   de: {
     invitation: "Wir heiraten!",
     inviteText: "laden dich/euch ein mit uns zu feiern",
+    inviteDescription: "Liebe Familie und Freunde,\n am Sandstrand, so war es gedacht,\n hätten wir gern die Zeremonie gemacht.\n Der Strand ist fern, der Weinberg nah -\n Deshalb feiern wir die Hochzeit da.",
     location: "Location",
     address: "Badstraße 7, 76835 Gleisweiler",
     dateLabel: "Datum",
@@ -20,8 +21,9 @@ const translations = {
     timeLabel: "Uhrzeit",
     time: "15:00 Uhr",
     dresscode: "Dresscode",
-    dresscodeText: "Elegante Garderobe",
+    dresscodeText: "Um dem Meer etwas nah zu sein, \n kleidet euch bitte türkisgrün ein. \n Natürlich nur wenn ihr wollt! \n Es wäre sehr schön und wir würden uns sehr freuen wenn ihr uns dabei unterstützt in die nähe unseres Traumes zu kommen.",
     colorSuggestion: "Farbempfehlung: Türkis-Töne",
+    giftInformation: "Deko und Staubfänger brauchen wir nicht - \n eine Traumreise wäre ein Gedicht",
     rsvpLabel: "Zu-/Absage bis",
     rsvpDate: "15. April 2026",
     contact: "Kontakt",
@@ -32,6 +34,7 @@ const translations = {
   pt: {
     invitation: "Nós vamos casar!",
     inviteText: "têm o prazer de convidá-lo para o seu casamento",
+    inviteDescription:"portuguese",
     location: "Local",
     address: "Badstraße 7, 76835 Gleisweiler",
     dateLabel: "Data",
@@ -41,6 +44,7 @@ const translations = {
     dresscode: "Dress Code",
     dresscodeText: "Traje elegante",
     colorSuggestion: "Sugestão de cor: Tons de turquesa",
+    giftInformation: "no presente",
     rsvpLabel: "Confirmação até",
     rsvpDate: "15 de abril de 2026",
     contact: "Contato",
@@ -223,7 +227,16 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
               <p className="text-[#8b7355]/80 max-w-md mx-auto text-sm leading-relaxed" style={{ fontFamily: "'Crimson Text', serif" }}>
                 {t.inviteText}
               </p>
+
             </motion.div>
+<motion.div>
+  <p
+    className="text-[#8b7355]/80 italic max-w-md mx-auto text-base leading-relaxed mt-4 text-center"
+    style={{ fontFamily: "'Crimson Text', serif", whiteSpace: "pre-line" }}
+  >
+    {t.inviteDescription}
+  </p>
+</motion.div>
 
             {/* Ornamental divider with silver */}
             <div className="flex items-center justify-center gap-3 my-10">
@@ -243,44 +256,65 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
               <div className="h-px w-20 bg-gradient-to-l from-transparent via-[#c0c0c0]/40 to-transparent"></div>
             </div>
 
-            {/* Event details */}
-            <motion.div 
-              className="space-y-6 mb-10 max-w-lg mx-auto"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7, duration: 0.8 }}
-            >
-              <div className="flex items-start gap-4 group">
-                <div className="w-8 h-8 rounded-full bg-[#9d8b7a]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#9d8b7a]/20 transition-colors">
-                  <Calendar className="w-4 h-4 text-[#8b7355]" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.dateLabel}</p>
-                  <p className="text-[#6b5d4f]">{t.date}</p>
-                </div>
-              </div>
+           {/* Content with two columns: event/details on left, giftInformation & contact on right */}
+              <div className="relative p-8 md:p-16 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                {/* Left column: Location, Date, Time */}
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4 group">
+                    <div className="w-8 h-8 rounded-full bg-[#9d8b7a]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#9d8b7a]/20 transition-colors">
+                      <Calendar className="w-4 h-4 text-[#8b7355]" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.dateLabel}</p>
+                      <p className="text-[#6b5d4f]">{t.date}</p>
+                    </div>
+                  </div>
 
-              <div className="flex items-start gap-4 group">
-                <div className="w-8 h-8 rounded-full bg-[#9d8b7a]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#9d8b7a]/20 transition-colors">
-                  <Clock className="w-4 h-4 text-[#8b7355]" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.timeLabel}</p>
-                  <p className="text-[#6b5d4f]">{t.time}</p>
-                </div>
-              </div>
+                  <div className="flex items-start gap-4 group">
+                    <div className="w-8 h-8 rounded-full bg-[#9d8b7a]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#9d8b7a]/20 transition-colors">
+                      <Clock className="w-4 h-4 text-[#8b7355]" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.timeLabel}</p>
+                      <p className="text-[#6b5d4f]">{t.time}</p>
+                    </div>
+                  </div>
 
-              <div className="flex items-start gap-4 group">
-                <div className="w-8 h-8 rounded-full bg-[#9d8b7a]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#9d8b7a]/20 transition-colors">
-                  <MapPin className="w-4 h-4 text-[#8b7355]" />
+                  <div className="flex items-start gap-4 group">
+                    <div className="w-8 h-8 rounded-full bg-[#9d8b7a]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#9d8b7a]/20 transition-colors">
+                      <MapPin className="w-4 h-4 text-[#8b7355]" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.location}</p>
+                      <p className="text-[#6b5d4f] mb-1">Zehnthof</p>
+                      <p className="text-[#8b7355]/70 text-sm">{t.address}</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.location}</p>
-                  <p className="text-[#6b5d4f] mb-1">Zehnthof</p>
-                  <p className="text-[#8b7355]/70 text-sm">{t.address}</p>
+
+                {/* Right column: giftInformation replacing RSVP and Contact */}
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-[#9d8b7a]/10 flex items-center justify-center flex-shrink-0">
+                      <Calendar className="w-4 h-4 text-[#8b7355]" />
+                    </div>
+                    <div>
+                      <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.rsvpLabel}</p>
+                      <p className="text-[#6b5d4f]" style={{ whiteSpace: "pre-line" }}>{t.rsvpDate}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-[#9d8b7a]/10 flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-4 h-4 text-[#8b7355]" />
+                    </div>
+                    <div>
+                      <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.contact}</p>
+                      <p className="text-[#6b5d4f]">{t.phone}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </motion.div>
 
             {/* Ornamental divider with silver */}
             <div className="flex items-center justify-center gap-3 my-10">
@@ -309,7 +343,10 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
             >
               <div className="text-center mb-6">
                 <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-4">{t.dresscode}</p>
-                <p className="text-[#6b5d4f] mb-6">{t.dresscodeText}</p>
+                <p className="text-[#8b7355]/80 italic max-w-md mx-auto text-base leading-relaxed mt-4 text-center"
+                  style={{ fontFamily: "'Crimson Text', serif", whiteSpace: "pre-line" }}>
+                  {t.dresscodeText}
+                </p>
               </div>
               
               {/* Elegant dress and suit icons */}
@@ -388,32 +425,14 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
             </div>
 
             {/* RSVP and Contact */}
-            <motion.div 
-              className="space-y-6 mb-10 max-w-lg mx-auto"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.9, duration: 0.8 }}
-            >
-              <div className="flex items-start gap-4 group">
-                <div className="w-8 h-8 rounded-full bg-[#9d8b7a]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#9d8b7a]/20 transition-colors">
-                  <Calendar className="w-4 h-4 text-[#8b7355]" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.rsvpLabel}</p>
-                  <p className="text-[#6b5d4f]">{t.rsvpDate}</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 group">
-                <div className="w-8 h-8 rounded-full bg-[#9d8b7a]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#9d8b7a]/20 transition-colors">
-                  <Phone className="w-4 h-4 text-[#8b7355]" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-1">{t.contact}</p>
-                  <p className="text-[#6b5d4f]">{t.phone}</p>
-                </div>
-              </div>
-            </motion.div>
+            <motion.div>
+  <p
+    className="text-[#8b7355]/80 italic max-w-md mx-auto text-base leading-relaxed mt-4 text-center"
+    style={{ fontFamily: "'Crimson Text', serif", whiteSpace: "pre-line" }}
+  >
+    {t.giftInformation}
+  </p>
+</motion.div>
 
             {/* Ornamental divider with silver */}
             <div className="flex items-center justify-center gap-3 my-10">
