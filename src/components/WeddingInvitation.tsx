@@ -32,26 +32,27 @@ const translations = {
     qrScan: "QR-Code einscannen"
   },
   pt: {
-    invitation: "Nós vamos casar!",
-    inviteText: "têm o prazer de convidá-lo para o seu casamento",
-    inviteDescription:"portuguese",
-    location: "Local",
-    address: "Badstraße 7, 76835 Gleisweiler",
-    dateLabel: "Data",
-    date: "15 de junho de 2026",
-    timeLabel: "Horário",
-    time: "15:00",
-    dresscode: "Dress Code",
-    dresscodeText: "Traje elegante",
-    colorSuggestion: "Sugestão de cor: Tons de turquesa",
-    giftInformation: "no presente",
-    rsvpLabel: "Confirmação até",
-    rsvpDate: "15 de abril de 2026",
-    contact: "Contato",
-    phone: "+49 160 94830553",
-    qrText: "Para mais informações",
-    qrScan: "Escaneie o código QR"
-  }
+  invitation: "Vamos casar!",
+  inviteText: "tem o prazer de convidar você para celebrar conosco",
+  inviteDescription: "Querida família e amigos,\n na praia de areia, como planejado,\n gostaríamos de realizar a cerimônia.\n A praia é distante, a vinícola perto -\n Por isso celebraremos o casamento lá.",
+  location: "Local",
+  address: "Rua Badstraße 7, 76835 Gleisweiler",
+  dateLabel: "Data",
+  date: "27 de junho de 2026",
+  timeLabel: "Horário",
+  time: "15:00 horas",
+  dresscode: "Código de vestimenta",
+  dresscodeText: "Para estar um pouco perto do mar, \n por favor, vistam-se em tons de turquesa. \n Claro, somente se quiserem! \n Seria muito bom e ficaríamos muito felizes se vocês nos ajudassem a chegar perto do nosso sonho.",
+  colorSuggestion: "Sugestão de cor: tons de turquesa",
+  giftInformation: "Não precisamos de decoração ou artigos que juntam poeira - \n uma viagem dos sonhos seria perfeito",
+  rsvpLabel: "Confirmação até",
+  rsvpDate: "15 de abril de 2026",
+  contact: "Contato",
+  phone: "+49 160 94830553",
+  qrText: "Para mais informações",
+  qrScan: "Escaneie o código QR"
+}
+
 };
 
 export function WeddingInvitation({ language }: WeddingInvitationProps) {
