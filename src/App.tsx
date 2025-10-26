@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { WeddingInvitation } from './components/WeddingInvitation';
 //import { DaySchedule } from './components/DaySchedule';
@@ -12,6 +12,14 @@ export default function App() {
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'de' ? 'pt' : 'de');
   };
+
+  useEffect(() => {
+    // Viewport auf Desktopbreite fixieren, auch auf mobilen Geräten
+    const viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (viewportMeta) {
+      viewportMeta.setAttribute('content', 'width=1024');
+    }
+  }, []);
 
   return (
     <>
@@ -84,7 +92,7 @@ export default function App() {
                 </g>
               </svg>
             </div>
-            <p 
+            <p
               className="text-[#6b5d4f] text-2xl mb-2"
               style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
             >

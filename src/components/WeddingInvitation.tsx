@@ -229,7 +229,7 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
         className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
         style={{ pointerEvents: "none" }}
       />
-      <p className="relative z-10 mb-4 text-[#6b5d4f] text-8xl md:text-8xl font-light drop-shadow-lg">27</p>
+      <p className="relative z-10 mb-4 text-[#6b5d4f] text-8xl md:text-9xl font-light drop-shadow-lg">27</p>
     </div>
 
     {/* Zweites Bild */}
@@ -240,7 +240,7 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
         className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
         style={{ pointerEvents: "none" }}
       />
-      <p className="relative z-10 mb-4 text-[#6b5d4f] text-8xl md:text-8xl font-light drop-shadow-lg">06</p>
+      <p className="relative z-10 mb-4 text-[#6b5d4f] text-8xl md:text-9xl font-light drop-shadow-lg">06</p>
     </div>
 
     {/* Drittes Bild */}
@@ -251,7 +251,7 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
         className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
         style={{ pointerEvents: "none" }}
       />
-      <p className="relative z-10 mb-4 text-[#6b5d4f] text-8xl md:text-8xl font-light drop-shadow-lg">26</p>
+      <p className="relative z-10 mb-4 text-[#6b5d4f] text-8xl md:text-9xl font-light drop-shadow-lg">26</p>
     </div>
   </div>
 </div>
