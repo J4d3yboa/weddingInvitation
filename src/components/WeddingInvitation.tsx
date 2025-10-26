@@ -206,10 +206,10 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
               </div>
 
 <div className="relative my-8" style={{ height: "45vh", maxHeight: "450px", minHeight: "300px" }}>
-  {/* Name-Overlay, responsive Textgrößen */}
+  {/* Name-Overlay auf den Bildern */}
   <div className="absolute top-1/2 left-0 w-full flex justify-center z-20 pointer-events-none" style={{ transform: "translateY(-60%)" }}>
     <motion.h1
-      className="text-[#6b5d4f] text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wide drop-shadow-lg"
+      className="text-[#6b5d4f] text-6xl sm:text-7xl md:text-8xl lg:text-7xl tracking-wide drop-shadow-lg"
       style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, lineHeight: 1.12 }}
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
@@ -220,38 +220,38 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
   </div>
 
   {/* Grid Layout */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 h-full w-full">
+  <div className="grid grid-cols-3 gap-2 h-full w-full">
     {/* Erstes Bild */}
-    <div className="relative flex items-end justify-center overflow-hidden rounded-lg shadow-lg h-64 sm:h-48 md:h-full w-full">
+    <div className="relative flex items-end justify-center overflow-hidden rounded-lg shadow-lg h-full w-full">
       <img
         src={coupleImage1}
         alt="Hintergrund 1"
         className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
         style={{ pointerEvents: "none" }}
       />
-      <p className="relative z-10 mb-2 text-[#6b5d4f] text-5xl sm:text-6xl md:text-8xl font-light drop-shadow-lg">27</p>
+      <p className="relative z-10 mb-4 text-[#6b5d4f] text-8xl md:text-9xl font-light drop-shadow-lg">27</p>
     </div>
 
     {/* Zweites Bild */}
-    <div className="relative flex items-end justify-center overflow-hidden rounded-lg shadow-lg h-64 sm:h-48 md:h-full w-full">
+    <div className="relative flex items-end justify-center overflow-hidden rounded-lg shadow-lg h-full w-full">
       <img
         src={coupleImage2}
         alt="Hintergrund 2"
         className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
         style={{ pointerEvents: "none" }}
       />
-      <p className="relative z-10 mb-2 text-[#6b5d4f] text-5xl sm:text-6xl md:text-8xl font-light drop-shadow-lg">06</p>
+      <p className="relative z-10 mb-4 text-[#6b5d4f] text-8xl md:text-9xl font-light drop-shadow-lg">06</p>
     </div>
 
     {/* Drittes Bild */}
-    <div className="relative flex items-end justify-center overflow-hidden rounded-lg shadow-lg h-64 sm:h-48 md:h-full w-full">
+    <div className="relative flex items-end justify-center overflow-hidden rounded-lg shadow-lg h-full w-full">
       <img
         src={coupleImage3}
         alt="Hintergrund 3"
         className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
         style={{ pointerEvents: "none" }}
       />
-      <p className="relative z-10 mb-2 text-[#6b5d4f] text-5xl sm:text-6xl md:text-8xl font-light drop-shadow-lg">26</p>
+      <p className="relative z-10 mb-4 text-[#6b5d4f] text-8xl md:text-9xl font-light drop-shadow-lg">26</p>
     </div>
   </div>
 </div>
