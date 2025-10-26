@@ -3,6 +3,9 @@ import { MapPin, Calendar, Clock, Phone } from 'lucide-react';
 import  strandImage  from "../assets/Strand.png";
 import qrCodeImage from "../assets/qr-code.png";
 import suitImage from "../assets/suit.png";
+import coupleImage1 from "../assets/CoupleBeachOne.jpeg";
+import coupleImage2 from "../assets/CoupleBeachTwo.jpeg";
+import coupleImage3 from "../assets/CoupleBeachThree.jpeg";
 import cocktailDressImage from "../assets/cocktailDress.png";
 
 interface WeddingInvitationProps {
@@ -201,27 +204,58 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
                   {t.invitation}
                 </p>
               </div>
-<div className="relative flex items-center justify-center my-8" style={{ height: "60vh", maxHeight: "400px", minHeight: "250px" }}>
-  {/* Hintergrundbild */}
-  <img
-    src={strandImage}
-    alt="Hintergrund"
-    className="absolute inset-0 w-full h-full object-cover opacity-40 z-0"
-    style={{ pointerEvents: "none" }}
-  />
-  {/* Text über dem Bild */}
-  <div className="relative z-10 space-y-3 px-4 text-center">
+
+<div className="relative my-8" style={{ height: "45vh", maxHeight: "450px", minHeight: "300px" }}>
+  {/* Name-Overlay auf den Bildern */}
+  <div className="absolute top-1/2 left-0 w-full flex justify-center z-20 pointer-events-none" style={{ transform: "translateY(-60%)" }}>
     <motion.h1
-      className="text-[#6b5d4f] text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-wide"
-      style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
-      initial={{ opacity: 0, y: 10 }}
+      className="text-[#6b5d4f] text-6xl sm:text-7xl md:text-8xl lg:text-7xl tracking-wide drop-shadow-lg"
+      style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, lineHeight: 1.12 }}
+      initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5, duration: 0.8 }}
+      transition={{ duration: 0.8 }}
     >
       Grazielle & Helge
     </motion.h1>
   </div>
+
+  {/* Grid Layout */}
+  <div className="grid grid-cols-3 gap-2 h-full w-full">
+    {/* Erstes Bild */}
+    <div className="relative flex items-end justify-center overflow-hidden rounded-lg shadow-lg h-full w-full">
+      <img
+        src={coupleImage1}
+        alt="Hintergrund 1"
+        className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
+        style={{ pointerEvents: "none" }}
+      />
+      <p className="relative z-10 mb-4 text-[#6b5d4f] text-8xl md:text-9xl font-light drop-shadow-lg">27</p>
+    </div>
+
+    {/* Zweites Bild */}
+    <div className="relative flex items-end justify-center overflow-hidden rounded-lg shadow-lg h-full w-full">
+      <img
+        src={coupleImage2}
+        alt="Hintergrund 2"
+        className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
+        style={{ pointerEvents: "none" }}
+      />
+      <p className="relative z-10 mb-4 text-[#6b5d4f] text-8xl md:text-9xl font-light drop-shadow-lg">06</p>
+    </div>
+
+    {/* Drittes Bild */}
+    <div className="relative flex items-end justify-center overflow-hidden rounded-lg shadow-lg h-full w-full">
+      <img
+        src={coupleImage3}
+        alt="Hintergrund 3"
+        className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
+        style={{ pointerEvents: "none" }}
+      />
+      <p className="relative z-10 mb-4 text-[#6b5d4f] text-8xl md:text-9xl font-light drop-shadow-lg">26</p>
+    </div>
+  </div>
 </div>
+
 
 
 
@@ -334,21 +368,39 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
               </svg>
               <div className="h-px w-20 bg-gradient-to-l from-transparent via-[#c0c0c0]/40 to-transparent"></div>
             </div>
+<motion.div 
+  className="mb-10"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.8, duration: 0.8 }}
+>
+  <div className="relative flex justify-center items-center mb-6 h-28 sm:h-32 md:h-40 lg:h-44 w-full max-w-lg mx-auto rounded-lg overflow-hidden">
+    
+    {/* Hintergrundbild – leicht nach unten verschoben */}
+    <img
+      src={strandImage}
+      alt="Dresscode Hintergrund"
+      className="absolute inset-0 w-full h-full object-cover opacity-50"
+      style={{ pointerEvents: "none", objectPosition: "center 65%" }}
+    />
 
-            {/* Dresscode */}
-            <motion.div 
-              className="mb-10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-            >
-              <div className="text-center mb-6">
-                <p className="text-[#8b7355]/60 text-xs uppercase tracking-widest mb-4">{t.dresscode}</p>
-                <p className="text-[#8b7355]/80 italic max-w-md mx-auto text-base leading-relaxed mt-4 text-center"
-                  style={{ fontFamily: "'Crimson Text', serif", whiteSpace: "pre-line" }}>
-                  {t.dresscodeText}
-                </p>
-              </div>
+    {/* Schriftzug auf dem Bild */}
+    <span className="relative z-10 text-[#6b5d4f] text-xl sm:text-2xl md:text-3xl font-serif tracking-wide text-center w-full px-6">
+      {t.dresscode}
+    </span>
+  </div>
+
+
+  {/* Beschreibung */}
+  <p 
+    className="text-[#8b7355]/80 italic max-w-md mx-auto text-base leading-relaxed mt-4 text-center"
+    style={{ fontFamily: "'Crimson Text', serif", whiteSpace: "pre-line" }}
+  >
+    {t.dresscodeText}
+  </p>
+
+
+
               
               {/* Elegant dress and suit icons */}
               <div className="flex items-center justify-center gap-12 mb-8">
