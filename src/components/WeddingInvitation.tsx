@@ -226,7 +226,7 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
       <img
         src={coupleImage1}
         alt="Hintergrund 1"
-        className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
+        className="absolute inset-0 w-full h-full object-cover object-center opacity-75"
         style={{ pointerEvents: "none" }}
       />
       <p className="relative z-10 mb-4 text-[#6b5d4f] text-8xl md:text-9xl font-light drop-shadow-lg">27</p>
@@ -237,7 +237,7 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
       <img
         src={coupleImage2}
         alt="Hintergrund 2"
-        className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
+        className="absolute inset-0 w-full h-full object-cover object-center opacity-75"
         style={{ pointerEvents: "none" }}
       />
       <p className="relative z-10 mb-4 text-[#6b5d4f] text-8xl md:text-9xl font-light drop-shadow-lg">06</p>
@@ -248,7 +248,7 @@ export function WeddingInvitation({ language }: WeddingInvitationProps) {
       <img
         src={coupleImage3}
         alt="Hintergrund 3"
-        className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
+        className="absolute inset-0 w-full h-full object-cover object-center opacity-75"
         style={{ pointerEvents: "none" }}
       />
       <p className="relative z-10 mb-4 text-[#6b5d4f] text-8xl md:text-9xl font-light drop-shadow-lg">26</p>
