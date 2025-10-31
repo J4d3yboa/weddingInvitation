@@ -31,7 +31,7 @@ const translations = {
     rsvpDate: "15. April 2026",
     contact: "Kontakt",
     phone: "+49 160 94830553",
-    qrText: "Für weitere Informationen",
+    qrText: "Für weitere Informationen ab dem 15. April 2026",
     qrScan: "QR-Code einscannen"
   },
   pt: {
@@ -52,7 +52,7 @@ const translations = {
   rsvpDate: "15 de abril de 2026",
   contact: "Contato",
   phone: "+49 160 94830553",
-  qrText: "Para mais informações",
+  qrText: "Para mais informações a partir de 15 de abril de 2026",
   qrScan: "Escaneie o código QR"
 }
 
