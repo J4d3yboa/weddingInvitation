@@ -36,10 +36,10 @@ const translations = {
     giftInformation: "Deko und Staubfänger brauchen wir nicht - \n eine Traumreise wäre ein Gedicht",
     scheduleTitle: "Tagesablauf",
     schedule: [
-      { time: "15:00", event: "Trauung" },
-      { time: "16:00", event: "Sektempfang & Fotos" },
-      { time: "18:00", event: "Abendessen" },
-      { time: "19:00", event: "Hochzeitstorte" },
+      { time: "15:00", event: "Sektempfang" },
+      { time: "16:00", event: "Zeremonie" },
+      { time: "18:00", event: "Vorspeise" },
+      { time: "19:00", event: "Abendessen" },
       { time: "20:00", event: "Party" }
     ],
     accommodationTitle: "Übernachtung",
@@ -75,10 +75,10 @@ const translations = {
     giftInformation: "Sobre presentes... \n qualquer brisa que nos leve a uma viagem dos sonhos seria perfeita.",
     scheduleTitle: "Programação",
     schedule: [
-      { time: "15:00", event: "Cerimônia" },
-      { time: "16:00", event: "Recepção e Fotos" },
-      { time: "18:00", event: "Jantar" },
-      { time: "19:00", event: "Bolo de Casamento" },
+      { time: "15:00", event: "Recepção" },
+      { time: "16:00", event: "Cerimônia" },
+      { time: "18:00", event: "Aperitivo" },
+      { time: "19:00", event: "Jantar" },
       { time: "20:00", event: "Festa" }
     ],
     accommodationTitle: "Acomodações",
